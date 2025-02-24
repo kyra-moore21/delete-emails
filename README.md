@@ -38,7 +38,7 @@ This Node.js script connects to an iCloud Mail account via IMAP and allows batch
 ## Usage
 1. Run the script:
    ```sh
-   node script.js
+   node delete-emails
    ```
 2. The script will connect to iCloud Mail and search for emails before January 1, 2022. (You can modify this by editing the search criteria)
 3. It will prompt the user to confirm deletion:
