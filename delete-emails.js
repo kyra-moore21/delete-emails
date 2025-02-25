@@ -112,10 +112,9 @@ async function processBatches(batches, batchIndex) {
     console.log(`Processing batch ${batchIndex + 1}/${batches.length} with ${batch.length} emails`);
 
     try {
-        // Add explicit error checking for each email
-        for (const messageId of batch) {
+        // Add error checking
             await new Promise((resolve, reject) => {
-                imap.setFlags(messageId.toString(), '\\Deleted', (err) => {
+                imap.addFlags(batch, '\\Deleted', (err) => {
                     if (err) {
                         reject(err);
                         return;
@@ -123,7 +122,6 @@ async function processBatches(batches, batchIndex) {
                     resolve();
                 });
             });
-        }
 
         // Expunge after each batch
         await new Promise((resolve, reject) => {
